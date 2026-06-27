@@ -1,0 +1,673 @@
+/* ==========================================================================
+   03_gadget_vs: ガジェット・光回線 対決比較 (テック・UI風)
+   ========================================================================== */
+
+:root {
+  /* --- カラー定義 (ここを書き換えることで色を変更できます) --- */
+  --color-primary: #0969da;         /* テックブルー */
+  --color-primary-light: #ddf4ff;   /* 薄いブルー背景 */
+  --color-secondary: #24292f;       /* ダークグレー */
+  --color-secondary-light: #f6f8fa; /* 薄いグレー背景 */
+  --color-accent: #cf222e;          /* 警告・アクシデント用の赤 */
+  --color-accent-light: #ffebe9;    /* 薄い赤背景 */
+  --color-text-main: #24292f;       /* メインテキスト */
+  --color-text-muted: #57606a;      /* 補助テキスト */
+  --color-bg-main: #ffffff;        /* メイン背景 */
+  --color-bg-soft: #f6f8fa;        /* 全体背景 */
+  --color-bg-card: #ffffff;        /* カード背景 */
+  --color-border: #d0d7de;         /* 標準枠線 (GitHub風) */
+  --color-border-dark: #24292f;    /* 強調枠線 */
+
+  /* --- スタイル定義 (テック・UI風) --- */
+  --border-radius: 6px;            /* シャープめの角丸 (モダンテック風) */
+  --border-style: 1px solid var(--color-border);
+  --box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 8px 24px rgba(140,149,159,0.1);
+  --font-family-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans JP", sans-serif;
+  --font-family-mono: 'JetBrains Mono', 'Courier New', Courier, monospace;
+  --spacing-unit: 8px;
+  --container-width: 960px;        /* 1カラムのため、少し狭めに設定 */
+}
+
+/* ==========================================================================
+   共通・ベーススタイル
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family-sans);
+  color: var(--color-text-main);
+  background-color: var(--color-bg-soft);
+  line-height: 1.6;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--border-radius);
+}
+
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 calc(var(--spacing-unit) * 3);
+}
+
+.code-font {
+  font-family: var(--font-family-mono);
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* ==========================================================================
+   レイアウト
+   ========================================================================== */
+.main-content {
+  margin-top: calc(var(--spacing-unit) * 4);
+  margin-bottom: calc(var(--spacing-unit) * 8);
+}
+
+/* ==========================================================================
+   コンポーネント (カード・ボタンなど)
+   ========================================================================== */
+.card {
+  background-color: var(--color-bg-card);
+  border: var(--border-style);
+  border-radius: var(--border-radius);
+  padding: calc(var(--spacing-unit) * 4);
+  margin-bottom: calc(var(--spacing-unit) * 4);
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-secondary);
+  border-bottom: 2px solid var(--color-border);
+  padding-bottom: calc(var(--spacing-unit) * 1);
+  margin-bottom: calc(var(--spacing-unit) * 3);
+  display: flex;
+  align-items: center;
+  gap: calc(var(--spacing-unit) * 1);
+}
+
+.section-title::before {
+  content: "";
+  display: inline-block;
+  width: 4px;
+  height: 18px;
+  background-color: var(--color-primary);
+  border-radius: 2px;
+}
+
+/* ボタン */
+.btn {
+  display: inline-block;
+  padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 3);
+  font-weight: 700;
+  font-size: 14px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: var(--border-radius);
+  border: 1px solid transparent;
+  transition: all 0.2s cubic-bezier(0.3, 0, 0, 1);
+}
+
+.btn-blue {
+  background-color: var(--color-primary);
+  color: #ffffff;
+  border: 1px solid rgba(27, 31, 36, 0.15);
+}
+
+.btn-blue:hover {
+  background-color: #0c61c9;
+  text-decoration: none;
+}
+
+.btn-dark {
+  background-color: var(--color-secondary);
+  color: #ffffff;
+  border: 1px solid rgba(27, 31, 36, 0.15);
+}
+
+.btn-dark:hover {
+  background-color: #2f363d;
+  text-decoration: none;
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+/* 星評価 */
+.stars {
+  color: #d4af37; /* ゴールド */
+}
+
+/* ==========================================================================
+   ヘッダー
+   ========================================================================== */
+.site-header {
+  background-color: var(--color-secondary);
+  color: #ffffff;
+  padding: calc(var(--spacing-unit) * 2) 0;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.site-logo a {
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.header-badge {
+  background-color: rgba(255, 255, 255, 0.15);
+  font-size: 11px;
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 3px;
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   記事ヘッダー
+   ========================================================================== */
+.article-header {
+  margin-bottom: calc(var(--spacing-unit) * 4);
+}
+
+.entry-title {
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.35;
+  margin-bottom: calc(var(--spacing-unit) * 1.5);
+  color: var(--color-secondary);
+}
+
+.entry-meta {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+/* ==========================================================================
+   対決ビジュアル (VS Hero)
+   ========================================================================== */
+.vs-hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  background-color: var(--color-bg-card);
+  border: var(--border-style);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: calc(var(--spacing-unit) * 4);
+  margin-bottom: calc(var(--spacing-unit) * 4);
+  gap: calc(var(--spacing-unit) * 3);
+  position: relative;
+  overflow: hidden;
+}
+
+@media (min-width: 576px) {
+  .vs-hero {
+    grid-template-columns: 10fr 3fr 10fr;
+    text-align: center;
+  }
+}
+
+.vs-competitor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: calc(var(--spacing-unit) * 2);
+}
+
+.vs-logo-area {
+  font-size: 22px;
+  font-weight: 900;
+  padding: calc(var(--spacing-unit) * 2) calc(var(--spacing-unit) * 4);
+  border-radius: var(--border-radius);
+  border: var(--border-style);
+  margin-bottom: calc(var(--spacing-unit) * 2);
+  width: 100%;
+  max-width: 260px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.logocolor-blue {
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
+  border-color: rgba(9, 105, 218, 0.3);
+}
+
+.logocolor-dark {
+  background-color: #eaeef2;
+  color: var(--color-secondary);
+  border-color: rgba(36, 41, 47, 0.2);
+}
+
+.vs-summary {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  max-width: 240px;
+}
+
+.vs-center {
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--color-accent);
+  background-color: var(--color-accent-light);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+  border: 1px solid rgba(207, 34, 46, 0.2);
+  z-index: 2;
+}
+
+/* ==========================================================================
+   一言結論 (サマリー)
+   ========================================================================== */
+.summary-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: calc(var(--spacing-unit) * 3);
+  margin-top: calc(var(--spacing-unit) * 2);
+}
+
+@media (min-width: 576px) {
+  .summary-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.summary-box {
+  padding: calc(var(--spacing-unit) * 3);
+  border-radius: var(--border-radius);
+  border: var(--border-style);
+}
+
+.summary-box h3 {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: calc(var(--spacing-unit) * 2);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.select-a {
+  background-color: var(--color-primary-light);
+  border-color: rgba(9, 105, 218, 0.2);
+}
+
+.select-a h3 {
+  color: var(--color-primary);
+}
+
+.select-b {
+  background-color: #eaeef2;
+  border-color: rgba(36, 41, 47, 0.15);
+}
+
+.select-b h3 {
+  color: var(--color-secondary);
+}
+
+.summary-box ul {
+  list-style: none;
+  font-size: 13.5px;
+}
+
+.summary-box ul li {
+  position: relative;
+  padding-left: calc(var(--spacing-unit) * 2.5);
+  margin-bottom: calc(var(--spacing-unit) * 1);
+  color: var(--color-text-main);
+}
+
+.summary-box ul li::before {
+  content: "■";
+  position: absolute;
+  left: 0;
+  font-size: 10px;
+  top: 1px;
+}
+
+.select-a ul li::before { color: var(--color-primary); }
+.select-b ul li::before { color: var(--color-secondary); }
+
+/* ==========================================================================
+   対決テーブル (VS Table)
+   ========================================================================== */
+.table-note {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  text-align: right;
+  margin-bottom: calc(var(--spacing-unit) * 1);
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  border: var(--border-style);
+  border-radius: var(--border-radius);
+  background-color: #ffffff;
+  box-shadow: var(--box-shadow);
+  margin-bottom: calc(var(--spacing-unit) * 6);
+}
+
+.vs-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  font-size: 14px;
+  min-width: 600px;
+}
+
+.vs-table th,
+.vs-table td {
+  padding: calc(var(--spacing-unit) * 2);
+  border-bottom: var(--border-style);
+  border-right: var(--border-style);
+}
+
+.vs-table th:last-child,
+.vs-table td:last-child {
+  border-right: none;
+}
+
+.vs-table thead th {
+  background-color: var(--color-secondary-light);
+  color: var(--color-secondary);
+  font-weight: 700;
+  border-bottom: 2px solid var(--color-border);
+}
+
+.vs-table thead th:first-child {
+  width: 30%;
+}
+
+.vs-table tbody th {
+  text-align: left;
+  background-color: var(--color-secondary-light);
+  font-weight: 500;
+  color: var(--color-text-main);
+}
+
+/* 左右カラムの幅 */
+.col-a, .col-b {
+  width: 35%;
+}
+
+/* ハイライトセル */
+.highlight-cell {
+  background-color: rgba(9, 105, 218, 0.05);
+  font-weight: bold;
+}
+
+.vs-table tbody tr:hover {
+  background-color: #fafbfc;
+}
+
+/* ==========================================================================
+   回線詳細 (メリット・デメリット)
+   ========================================================================== */
+.details-section {
+  margin-bottom: calc(var(--spacing-unit) * 6);
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: calc(var(--spacing-unit) * 4);
+  margin-top: calc(var(--spacing-unit) * 3);
+}
+
+@media (min-width: 769px) {
+  .details-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.detail-card {
+  padding: 0 !important; /* カードの内余白をリセット */
+  overflow: hidden;
+}
+
+.detail-card.border-blue { border-color: rgba(9, 105, 218, 0.4); }
+.detail-card.border-dark { border-color: rgba(36, 41, 47, 0.3); }
+
+.detail-header {
+  font-weight: bold;
+  padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 2.5);
+  color: #ffffff;
+  font-size: 16px;
+}
+
+.bg-blue { background-color: var(--color-primary); }
+.bg-dark { background-color: var(--color-secondary); }
+
+.detail-body {
+  padding: calc(var(--spacing-unit) * 3);
+}
+
+.detail-body .proscons-box {
+  margin-bottom: calc(var(--spacing-unit) * 3);
+}
+
+.detail-body .proscons-box:last-child {
+  margin-bottom: 0;
+}
+
+.detail-body h4 {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: calc(var(--spacing-unit) * 1);
+  color: var(--color-secondary);
+}
+
+.detail-body ul {
+  list-style: none;
+  font-size: 13.5px;
+}
+
+.detail-body ul li {
+  position: relative;
+  padding-left: calc(var(--spacing-unit) * 2.5);
+  margin-bottom: calc(var(--spacing-unit) * 1);
+  color: var(--color-text-muted);
+}
+
+.detail-body ul li::before {
+  content: "-";
+  position: absolute;
+  left: calc(var(--spacing-unit) * 1);
+}
+
+/* ==========================================================================
+   決定ガイド
+   ========================================================================== */
+.decision-section {
+  margin-bottom: calc(var(--spacing-unit) * 6);
+}
+
+.decision-list {
+  list-style: none;
+  margin-top: calc(var(--spacing-unit) * 3);
+}
+
+.decision-list li {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: calc(var(--spacing-unit) * 3);
+  gap: calc(var(--spacing-unit) * 1.5);
+}
+
+@media (min-width: 576px) {
+  .decision-list li {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: calc(var(--spacing-unit) * 3);
+  }
+}
+
+.decision-list li:last-child {
+  margin-bottom: 0;
+}
+
+.decision-badge {
+  background-color: var(--color-secondary);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 4px 12px;
+  border-radius: 40px;
+  align-self: flex-start;
+  flex-shrink: 0;
+}
+
+.decision-list strong {
+  font-size: 16px;
+  display: block;
+  margin-bottom: 4px;
+  color: var(--color-secondary);
+}
+
+.decision-list p {
+  font-size: 14px;
+  color: var(--color-text-muted);
+}
+
+/* ==========================================================================
+   左右並列CTA (VS CTA)
+   ========================================================================== */
+.vs-cta-section {
+  margin-bottom: calc(var(--spacing-unit) * 6);
+}
+
+.cta-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: calc(var(--spacing-unit) * 4);
+  margin-top: calc(var(--spacing-unit) * 3);
+}
+
+@media (min-width: 576px) {
+  .cta-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.cta-card {
+  background-color: var(--color-bg-card);
+  border: var(--border-style);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: calc(var(--spacing-unit) * 4);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cta-card.border-blue { border-top: 4px solid var(--color-primary); }
+.cta-card.border-dark { border-top: 4px solid var(--color-secondary); }
+
+.cta-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: calc(var(--spacing-unit) * 1);
+  color: var(--color-secondary);
+}
+
+.cta-card p {
+  font-size: 13px;
+  font-weight: bold;
+  color: var(--color-accent);
+  margin-bottom: calc(var(--spacing-unit) * 1.5);
+}
+
+.cta-desc {
+  font-size: 13.5px !important;
+  color: var(--color-text-muted) !important;
+  font-weight: normal !important;
+  margin-bottom: calc(var(--spacing-unit) * 3) !important;
+  min-height: 48px;
+}
+
+/* ==========================================================================
+   フッター
+   ========================================================================== */
+.site-footer {
+  background-color: var(--color-secondary-light);
+  color: var(--color-text-muted);
+  padding: calc(var(--spacing-unit) * 6) 0;
+  font-size: 12px;
+  border-top: var(--border-style);
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing-unit) * 3);
+}
+
+.footer-logo {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-secondary);
+}
+
+.footer-disclaimer {
+  line-height: 1.6;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--spacing-unit) * 3);
+}
+
+.footer-links a {
+  color: var(--color-text-muted);
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.footer-copy {
+  margin-top: calc(var(--spacing-unit) * 2);
+  color: rgba(36, 41, 47, 0.4);
+}

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>【徹底検索】自分に合うプログラミングスクールおすすめ絞り込み検索</title>
+  <meta name="description" content="受講スタイル、価格帯、目的、転職支援の有無など、あなたの希望条件から最適なプログラミングスクールを絞り込んで比較・検索できます。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ヘッダー -->
+  <header class="site-header">
+    <div class="container header-container">
+      <div class="site-logo">
+        <a href="#">スクール比較Navi</a>
+      </div>
+      <p class="site-tagline">条件にぴったりの学びが見つかるデータベース</p>
+    </div>
+  </header>
+
+  <div class="container main-layout">
+    <!-- 左サイドバー: 絞り込み条件 -->
+    <aside class="search-sidebar">
+      <div class="filter-card">
+        <div class="filter-header">
+          <h3>希望条件で絞り込む</h3>
+          <button type="button" class="btn-clear">条件クリア</button>
+        </div>
+
+        <form class="filter-form">
+          <!-- 受講スタイル -->
+          <div class="filter-group">
+            <h4 class="filter-title">受講スタイル</h4>
+            <label class="checkbox-label">
+              <input type="checkbox" name="style" value="online" checked>
+              <span>オンライン完結</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="style" value="classroom">
+              <span>通学・教室あり</span>
+            </label>
+          </div>
+
+          <!-- 学びたい言語・目的 -->
+          <div class="filter-group">
+            <h4 class="filter-title">学びたい言語・スキル</h4>
+            <label class="checkbox-label">
+              <input type="checkbox" name="lang" value="web" checked>
+              <span>HTML/CSS/JavaScript</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="lang" value="python">
+              <span>Python / AI・データ分析</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="lang" value="ruby">
+              <span>Ruby on Rails (Web開発)</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="lang" value="java">
+              <span>Java / システム開発</span>
+            </label>
+          </div>
+
+          <!-- 受講期間 -->
+          <div class="filter-group">
+            <h4 class="filter-title">受講期間</h4>
+            <select name="duration" class="form-select">
+              <option value="any">指定なし</option>
+              <option value="short">〜3ヶ月</option>
+              <option value="medium" selected>3ヶ月〜6ヶ月</option>
+              <option value="long">6ヶ月以上</option>
+            </select>
+          </div>
+
+          <!-- 転職サポート -->
+          <div class="filter-group">
+            <h4 class="filter-title">転職支援・保証</h4>
+            <label class="radio-label">
+              <input type="radio" name="support" value="any" checked>
+              <span>指定なし</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="support" value="job-change">
+              <span>転職支援サポートあり</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="support" value="guarantee">
+              <span>転職返金保証あり</span>
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">この条件で検索する</button>
+        </form>
+      </div>
+    </aside>
+
+    <!-- 右メイン: 検索結果一覧 -->
+    <main class="main-content">
+      
+      <!-- 結果数・並び替え -->
+      <div class="results-header">
+        <p class="results-count">検索結果: <strong>3件</strong> のスクールが該当</p>
+        <div class="sort-select-wrapper">
+          <label for="sort-select">並び替え:</label>
+          <select id="sort-select" class="form-select-sm">
+            <option value="recommend">おすすめ順</option>
+            <option value="price-asc">受講料が安い順</option>
+            <option value="rating">評価が高い順</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- スクールカード1 -->
+      <article class="result-card">
+        <div class="card-left">
+          <div class="dummy-logo">Tech Academy</div>
+          <div class="tags-row">
+            <span class="tag">オンライン</span>
+            <span class="tag">転職支援あり</span>
+            <span class="tag">初心者対応</span>
+          </div>
+        </div>
+        <div class="card-right">
+          <div class="card-header-row">
+            <h3 class="school-name">テックコード・キャリア</h3>
+            <span class="rating">評点: <strong>4.8</strong> <span class="stars">★★★★★</span></span>
+          </div>
+          <p class="school-desc">業界トップクラスの転職実績を誇るオンラインスクール。現役エンジニアがマンツーマンでパーソナルメンターとなり、未経験からWeb開発の現場で即戦力となるスキルを最短3ヶ月で習得します。転職返金保証あり。</p>
+          
+          <table class="spec-table">
+            <tr>
+              <th>受講期間</th><td>12週間 (3ヶ月)</td>
+              <th>受講料金</th><td>327,800円 (税込)</td>
+            </tr>
+            <tr>
+              <th>カリキュラム</th><td>HTML/CSS, JavaScript, Ruby on Rails, Git, SQL</td>
+              <th>保証制度</th><td>全額返金保証（規定あり）</td>
+            </tr>
+          </table>
+
+          <div class="card-action-row">
+            <a href="#" class="btn btn-outline" target="_blank" rel="nofollow">詳細レビューを読む</a>
+            <a href="#" class="btn btn-primary" target="_blank" rel="nofollow">無料カウンセリングへ</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- スクールカード2 -->
+      <article class="result-card">
+        <div class="card-left">
+          <div class="dummy-logo">AI Engine</div>
+          <div class="tags-row">
+            <span class="tag">オンライン</span>
+            <span class="tag">夜間対応</span>
+            <span class="tag">給付金対象</span>
+          </div>
+        </div>
+        <div class="card-right">
+          <div class="card-header-row">
+            <h3 class="school-name">データラーニング・ラボ</h3>
+            <span class="rating">評点: <strong>4.6</strong> <span class="stars">★★★★☆</span></span>
+          </div>
+          <p class="school-desc">AIとデータサイエンス、Pythonに特化した専門スクール。データ分析の基礎から、機械学習アルゴリズムの実装まで網羅的に学習します。国の給付金制度の対象であるため、条件を満たせば受講料が最大70%キャッシュバックされます。</p>
+          
+          <table class="spec-table">
+            <tr>
+              <th>受講期間</th><td>16週間 (4ヶ月)</td>
+              <th>受講料金</th><td>498,000円 (給付金適用で149,400円)</td>
+            </tr>
+            <tr>
+              <th>カリキュラム</th><td>Python, SQL, 機械学習, 統計学, Tableau</td>
+              <th>保証制度</th><td>給付金対象（最大70%支給）</td>
+            </tr>
+          </table>
+
+          <div class="card-action-row">
+            <a href="#" class="btn btn-outline" target="_blank" rel="nofollow">詳細レビューを読む</a>
+            <a href="#" class="btn btn-primary" target="_blank" rel="nofollow">無料相談会に参加する</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- スクールカード3 -->
+      <article class="result-card">
+        <div class="card-left">
+          <div class="dummy-logo">Smart Dev</div>
+          <div class="tags-row">
+            <span class="tag">オンライン</span>
+            <span class="tag">サブスク型</span>
+            <span class="tag">働きながら</span>
+          </div>
+        </div>
+        <div class="card-right">
+          <div class="card-header-row">
+            <h3 class="school-name">ライトコード・アカデミー</h3>
+            <span class="rating">評点: <strong>4.3</strong> <span class="stars">★★★★☆</span></span>
+          </div>
+          <p class="school-desc">月額定額（サブスクリプション）制で、自分のペースで好きなだけ学べる現代的なスクール。未経験者向けのWeb基礎から、フロントエンドエンジニアへのステップアップに必要なReact、Next.jsまで幅広い教材がいつでも開放されています。</p>
+          
+          <table class="spec-table">
+            <tr>
+              <th>受講期間</th><td>月額課金 (平均受講: 3ヶ月)</td>
+              <th>受講料金</th><td>月額 19,800円 (税込)</td>
+            </tr>
+            <tr>
+              <th>カリキュラム</th><td>HTML/CSS, JavaScript, React, Node.js, WebAPI</td>
+              <th>保証制度</th><td>なし（いつでも即時退会OK）</td>
+            </tr>
+          </table>
+
+          <div class="card-action-row">
+            <a href="#" class="btn btn-outline" target="_blank" rel="nofollow">詳細レビューを読む</a>
+            <a href="#" class="btn btn-primary" target="_blank" rel="nofollow">7日間の無料体験を試す</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- ページネーション -->
+      <nav class="pagination">
+        <span class="page-num current">1</span>
+        <a href="#" class="page-num">2</a>
+        <a href="#" class="page-num">3</a>
+        <span class="page-divider">...</span>
+        <a href="#" class="page-num">Next &raquo;</a>
+      </nav>
+
+    </main>
+  </div>
+
+  <!-- フッター -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-logo">スクール比較Navi</div>
+      <p class="footer-disclaimer">【免責事項】本サイトに掲載しているプログラミングスクールの受講料金、期間、給付金適用有無などの情報は、各スクールの公式サイトをもとに常に更新を心がけておりますが、受講改定やキャンペーン等で一時的に最新でない場合があります。最終的なお申し込みや条件の確認は、必ず各スクールの無料相談や公式サイトでご確認ください。</p>
+      <ul class="footer-links">
+        <li><a href="#">運営者情報</a></li>
+        <li><a href="#">プライバシーポリシー</a></li>
+        <li><a href="#">お問い合わせ</a></li>
+      </ul>
+      <p class="footer-copy">&copy; 2026 スクール比較Navi. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

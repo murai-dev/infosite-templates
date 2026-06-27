@@ -1,0 +1,602 @@
+/* ==========================================================================
+   06_fitness_lp: オンラインフィットネス体験入会LP (スポーツ・アクティブ)
+   ========================================================================== */
+
+:root {
+  /* --- カラー定義 (ここを書き換えることで色を変更できます) --- */
+  --color-primary: #ff3b30;         /* エネルギッシュな情熱の赤 */
+  --color-primary-light: #ffebeb;   /* 薄い赤背景 */
+  --color-secondary: #111111;       /* パワフルなダークブラック */
+  --color-secondary-light: #2c2c2e; /* サブのダークグレー */
+  --color-accent: #ffcc00;          /* 輝くネオンイエロー */
+  --color-accent-dark: #cc9900;     /* トーンを落としたイエロー */
+  --color-text-main: #1c1c1e;       /* メインテキスト */
+  --color-text-muted: #8e8e93;      /* 補助テキスト */
+  --color-bg-main: #ffffff;        /* メイン背景 */
+  --color-bg-soft: #f2f2f7;        /* 全体背景 */
+  --color-bg-card: #ffffff;        /* カード背景 */
+  --color-border: #e5e5ea;         /* 標準枠線 */
+
+  /* --- スタイル定義 (スポーツ・アクティブ) --- */
+  --border-radius: 4px;            /* シャープめの角丸 */
+  --border-style: 2px solid var(--color-secondary); /* 力強い黒枠線 */
+  --box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  --font-family-sans: "Noto Sans JP", sans-serif;
+  --font-family-title: "Oswald", "Noto Sans JP", sans-serif; /* 極太英字フォント */
+  --spacing-unit: 8px;
+  --container-width: 960px;
+}
+
+/* ==========================================================================
+   共通・ベーススタイル
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family-sans);
+  color: var(--color-text-main);
+  background-color: var(--color-bg-main);
+  line-height: 1.6;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.bg-red { background-color: var(--color-primary); }
+.text-white { color: #ffffff; }
+
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 calc(var(--spacing-unit) * 3);
+  position: relative;
+  z-index: 2;
+}
+
+/* ==========================================================================
+   コンポーネント (ボタンなど)
+   ========================================================================== */
+/* ボタン */
+.btn {
+  display: inline-block;
+  padding: calc(var(--spacing-unit) * 2) calc(var(--spacing-unit) * 4);
+  font-family: var(--font-family-title);
+  font-weight: 900;
+  font-size: 16px;
+  letter-spacing: 1px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: var(--border-radius);
+  border: none;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: #d62218;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 59, 48, 0.4);
+}
+
+.btn-accent {
+  background-color: var(--color-accent);
+  color: var(--color-secondary);
+}
+
+.btn-accent:hover {
+  background-color: var(--color-accent-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 204, 0, 0.4);
+}
+
+.btn-sm {
+  font-size: 12px;
+  padding: calc(var(--spacing-unit) * 1) calc(var(--spacing-unit) * 2);
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+/* マイクロアニメーション：バウンド */
+@keyframes bounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+.btn-bounce {
+  animation: bounce 2s infinite ease-in-out;
+}
+
+.btn-bounce:hover {
+  animation: none;
+}
+
+/* セクション共通見出し */
+.section-title {
+  font-family: var(--font-family-title);
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--color-secondary);
+  margin-bottom: calc(var(--spacing-unit) * 4);
+  text-transform: uppercase;
+}
+
+@media (min-width: 769px) {
+  .section-title {
+    font-size: 32px;
+  }
+}
+
+.section-tag {
+  display: inline-block;
+  font-family: var(--font-family-title);
+  font-size: 12px;
+  font-weight: bold;
+  padding: 2px 10px;
+  margin-bottom: calc(var(--spacing-unit) * 1.5);
+  letter-spacing: 1px;
+}
+
+/* ==========================================================================
+   ヘッダー
+   ========================================================================== */
+.site-header {
+  background-color: var(--color-secondary);
+  color: #ffffff;
+  padding: calc(var(--spacing-unit) * 1.5) 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.site-logo {
+  font-family: var(--font-family-title);
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   ファーストビュー (Hero)
+   ========================================================================== */
+.hero-section {
+  background-color: var(--color-secondary);
+  background-image: linear-gradient(135deg, rgba(17,17,17,0.95), rgba(44,44,46,0.9)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none"/><path d="M0,0 L100,100 M100,0 L0,100" stroke="%232c2c2e" stroke-width="1"/></svg>');
+  color: #ffffff;
+  padding: calc(var(--spacing-unit) * 18) 0 calc(var(--spacing-unit) * 12) 0;
+  text-align: center;
+  position: relative;
+  /* 下部を斜めにカット */
+  clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
+}
+
+.hero-sub {
+  display: inline-block;
+  background-color: var(--color-primary);
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 13px;
+  padding: 4px 12px;
+  margin-bottom: calc(var(--spacing-unit) * 3);
+  letter-spacing: 1px;
+}
+
+.hero-title {
+  font-family: var(--font-family-title);
+  font-size: 32px;
+  font-weight: 900;
+  line-height: 1.3;
+  margin-bottom: calc(var(--spacing-unit) * 3);
+}
+
+@media (min-width: 769px) {
+  .hero-title {
+    font-size: 52px;
+  }
+}
+
+.highlight-text {
+  color: var(--color-accent);
+}
+
+.hero-desc {
+  font-size: 14.5px;
+  color: rgba(255,255,255,0.8);
+  max-width: 680px;
+  margin: 0 auto calc(var(--spacing-unit) * 5) auto;
+}
+
+.hero-cta {
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+.cta-tag {
+  font-size: 12px;
+  font-weight: bold;
+  color: var(--color-accent);
+  margin-bottom: calc(var(--spacing-unit) * 1);
+  letter-spacing: 1px;
+}
+
+/* ==========================================================================
+   痛みへの共感 (Pain Section)
+   ========================================================================== */
+.pain-section {
+  padding: calc(var(--spacing-unit) * 10) 0;
+  background-color: #ffffff;
+}
+
+.pain-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: calc(var(--spacing-unit) * 3);
+}
+
+@media (min-width: 769px) {
+  .pain-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.pain-card {
+  background-color: var(--color-bg-soft);
+  border: var(--border-style);
+  padding: calc(var(--spacing-unit) * 3);
+  text-align: center;
+  position: relative;
+  transition: transform 0.2s ease;
+}
+
+.pain-card:hover {
+  transform: translateY(-2px);
+}
+
+.pain-icon {
+  font-size: 32px;
+  display: block;
+  margin-bottom: calc(var(--spacing-unit) * 1.5);
+}
+
+.pain-card p {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* ==========================================================================
+   解決策 (Solution Section)
+   ========================================================================== */
+.solution-section {
+  padding: calc(var(--spacing-unit) * 12) 0;
+  background-color: var(--color-bg-soft);
+  /* 上下を斜めにカット */
+  clip-path: polygon(0 4%, 100% 0, 100% 96%, 0 100%);
+}
+
+.sol-list {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing-unit) * 4);
+  margin-top: calc(var(--spacing-unit) * 4);
+}
+
+.sol-item {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border: var(--border-style);
+  padding: calc(var(--spacing-unit) * 3);
+  position: relative;
+}
+
+@media (min-width: 640px) {
+  .sol-item {
+    flex-direction: row;
+    align-items: center;
+    gap: calc(var(--spacing-unit) * 4);
+    padding: calc(var(--spacing-unit) * 4);
+  }
+}
+
+.sol-num {
+  font-family: var(--font-family-title);
+  font-size: 48px;
+  font-weight: 900;
+  color: var(--color-primary);
+  line-height: 1;
+  border-bottom: 3px solid var(--color-primary);
+  align-self: flex-start;
+  margin-bottom: calc(var(--spacing-unit) * 1.5);
+}
+
+@media (min-width: 640px) {
+  .sol-num {
+    border-bottom: none;
+    border-right: 3px solid var(--color-primary);
+    padding-right: calc(var(--spacing-unit) * 3);
+    margin-bottom: 0;
+    font-size: 64px;
+  }
+}
+
+.sol-content h3 {
+  font-size: 18px;
+  font-weight: 900;
+  margin-bottom: calc(var(--spacing-unit) * 1);
+  color: var(--color-secondary);
+}
+
+.sol-content p {
+  font-size: 14px;
+  color: var(--color-text-main);
+}
+
+/* ==========================================================================
+   お客様の声 (Voice Section)
+   ========================================================================== */
+.voice-section {
+  padding: calc(var(--spacing-unit) * 10) 0;
+  background-color: #ffffff;
+}
+
+.voice-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: calc(var(--spacing-unit) * 4);
+}
+
+@media (min-width: 769px) {
+  .voice-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.voice-card {
+  border: var(--border-style);
+  padding: calc(var(--spacing-unit) * 3.5);
+  background-color: #ffffff;
+  box-shadow: var(--box-shadow);
+  position: relative;
+}
+
+.voice-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px dashed var(--color-secondary);
+  padding-bottom: calc(var(--spacing-unit) * 1.5);
+  margin-bottom: calc(var(--spacing-unit) * 2);
+}
+
+.voice-meta {
+  font-size: 12.5px;
+  color: var(--color-text-muted);
+}
+
+.voice-result {
+  font-family: var(--font-family-title);
+  color: var(--color-primary);
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.voice-text {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* ==========================================================================
+   よくある質問 (FAQ)
+   ========================================================================== */
+.faq-section {
+  padding: calc(var(--spacing-unit) * 10) 0;
+  background-color: var(--color-bg-soft);
+  clip-path: polygon(0 2%, 100% 0, 100% 100%, 0 98%);
+}
+
+.faq-accordion {
+  max-width: 700px;
+  margin: calc(var(--spacing-unit) * 4) auto 0 auto;
+}
+
+.faq-item {
+  background-color: #ffffff;
+  border: var(--border-style);
+  margin-bottom: calc(var(--spacing-unit) * 2);
+}
+
+.faq-q {
+  font-weight: 900;
+  font-size: 15px;
+  cursor: pointer;
+  padding: calc(var(--spacing-unit) * 2);
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faq-q::-webkit-details-marker {
+  display: none;
+}
+
+.faq-q::after {
+  content: "+";
+  font-size: 20px;
+  font-weight: bold;
+}
+
+details[open] .faq-q::after {
+  content: "-";
+}
+
+.faq-a {
+  padding: calc(var(--spacing-unit) * 2);
+  border-top: 1px dashed var(--color-border);
+  font-size: 13.5px;
+  color: var(--color-text-main);
+  background-color: #fafafa;
+}
+
+/* ==========================================================================
+   申込フォーム (Form Section)
+   ========================================================================== */
+.form-section {
+  padding: calc(var(--spacing-unit) * 12) 0;
+  background-color: var(--color-secondary);
+  background-image: linear-gradient(135deg, rgba(17,17,17,0.98), rgba(44,44,46,0.95)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none"/><path d="M0,0 L100,100 M100,0 L0,100" stroke="%232c2c2e" stroke-width="1"/></svg>');
+}
+
+.form-card {
+  background-color: #ffffff;
+  border: 4px solid var(--color-primary);
+  padding: calc(var(--spacing-unit) * 4);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+@media (min-width: 640px) {
+  .form-card {
+    padding: calc(var(--spacing-unit) * 6);
+  }
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: calc(var(--spacing-unit) * 4);
+  border-bottom: 2px dashed var(--color-border);
+  padding-bottom: calc(var(--spacing-unit) * 3);
+}
+
+.form-tag {
+  display: inline-block;
+  background-color: var(--color-primary);
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 11px;
+  padding: 2px 12px;
+  margin-bottom: calc(var(--spacing-unit) * 1.5);
+}
+
+.form-header h2 {
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--color-secondary);
+  margin-bottom: calc(var(--spacing-unit) * 1);
+}
+
+.form-header p {
+  font-size: 12.5px;
+  color: var(--color-text-muted);
+}
+
+/* フォームUI */
+.lead-form .form-group {
+  margin-bottom: calc(var(--spacing-unit) * 3);
+}
+
+.lead-form label {
+  display: block;
+  font-size: 13.5px;
+  font-weight: bold;
+  margin-bottom: calc(var(--spacing-unit) * 1);
+  color: var(--color-secondary);
+}
+
+.lead-form .required {
+  background-color: var(--color-primary);
+  color: #ffffff;
+  font-size: 10px;
+  padding: 1px 4px;
+  border-radius: 2px;
+  margin-left: 4px;
+}
+
+.lead-form input[type="text"],
+.lead-form input[type="email"],
+.lead-form input[type="tel"],
+.lead-form select {
+  width: 100%;
+  padding: calc(var(--spacing-unit) * 1.5);
+  border: 2px solid var(--color-border);
+  border-radius: var(--border-radius);
+  font-family: inherit;
+  font-size: 14px;
+  outline: none;
+  background-color: #fafafa;
+}
+
+.lead-form input:focus,
+.lead-form select:focus {
+  border-color: var(--color-secondary);
+  background-color: #ffffff;
+}
+
+.lead-form button {
+  margin-top: calc(var(--spacing-unit) * 2);
+  padding: calc(var(--spacing-unit) * 2.5);
+}
+
+/* ==========================================================================
+   フッター
+   ========================================================================== */
+.site-footer {
+  background-color: var(--color-secondary);
+  color: var(--color-text-muted);
+  padding: calc(var(--spacing-unit) * 4) 0;
+  font-size: 11px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.site-footer a {
+  color: var(--color-text-muted);
+  font-weight: normal;
+  text-decoration: underline;
+}
+
+.site-footer a:hover {
+  color: #ffffff;
+}
+
+.footer-copy {
+  margin-top: calc(var(--spacing-unit) * 1);
+}
