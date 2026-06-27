@@ -9,14 +9,14 @@
 
 各ディレクトリ内に `index.html` と `style.css` が格納されており、完全に独立して動作します。
 
-| ディレクトリ | 想定ジャンル / 商材 | コンセプト（レイアウト） | テイスト（デザイン） |
-| :--- | :--- | :--- | :--- |
-| **`01_finance_ranking`** | クレジットカード、FX、証券、不動産査定 | 2カラム（右サイドバー） / 王道ランキング・比較型 | コーポレート・クラシック<br>（信頼感・堅実） |
-| **`02_beauty_review`** | コスメ、サプリメント、脱毛、宅配買取 | 2カラム（左サイドバー） / 単体商品レビュー・評価型 | カジュアル・ポップ<br>（とっつきやすい・親しみ） |
-| **`03_gadget_vs`** | 光回線（A社 vs B社）、格安SIM、サーバー | 1カラム / 2社直接対決・比較型 | テック・UI風<br>（機能的・モダン） |
-| **`04_career_search`** | 転職エージェント、スクール、地域サービス | 2カラム / 条件絞り込み・検索ポータル型 | クリーン・ミニマル<br>（すっきり見やすい） |
-| **`05_vod_blog`** | VOD（動画配信）、ライフハック、トレンド | 2カラム（右サイドバー） / ブログ・コラム・SEO集客型 | ニュース・マガジン<br>（王道メディア風） |
-| **`06_fitness_lp`** | フィットネスジム、ヨガ、オンライン講座 | 1カラム / 1枚完結LP型 | スポーツ・アクティブ<br>（エネルギッシュ・斜めカット） |
+| ディレクトリ | デモ（GitHub Pages） | 想定ジャンル / 商材 | コンセプト（レイアウト） | テイスト（デザイン） |
+| :--- | :--- | :--- | :--- | :--- |
+| **`01_finance_ranking`** | [デモ表示](https://murai-dev.github.io/infosite-templates/01_finance_ranking/index.html) | クレジットカード、FX、証券、不動産査定 | 2カラム（右サイドバー） / 王道ランキング・比較型 | コーポレート・クラシック<br>（信頼感・堅実） |
+| **`02_beauty_review`** | [デモ表示](https://murai-dev.github.io/infosite-templates/02_beauty_review/index.html) | コスメ、サプリメント、脱毛、宅配買取 | 2カラム（左サイドバー） / 単体商品レビュー・評価型 | カジュアル・ポップ<br>（とっつきやすい・親しみ） |
+| **`03_gadget_vs`** | [デモ表示](https://murai-dev.github.io/infosite-templates/03_gadget_vs/index.html) | 光回線（A社 vs B社）、格安SIM、サーバー | 1カラム / 2社直接対決・比較型 | テック・UI風<br>（機能的・モダン） |
+| **`04_career_search`** | [デモ表示](https://murai-dev.github.io/infosite-templates/04_career_search/index.html) | 転職エージェント、スクール、地域サービス | 2カラム / 条件絞り込み・検索ポータル型 | クリーン・ミニマル<br>（すっきり見やすい） |
+| **`05_vod_blog`** | [デモ表示](https://murai-dev.github.io/infosite-templates/05_vod_blog/index.html) | VOD（動画配信）、ライフハック、トレンド | 2カラム（右サイドバー） / ブログ・コラム・SEO集客型 | ニュース・マガジン<br>（王道メディア風） |
+| **`06_fitness_lp`** | [デモ表示](https://murai-dev.github.io/infosite-templates/06_fitness_lp/index.html) | フィットネスジム、ヨガ、オンライン講座 | 1カラム / 1枚完結LP型 | スポーツ・アクティブ<br>（エネルギッシュ・斜めカット） |
 
 ---
 
